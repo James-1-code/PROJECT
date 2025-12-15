@@ -17,9 +17,10 @@ function processForm() {
     let maritalStatus = document.getElementById("maritalStatus").value;
     let children = parseInt(document.getElementById("childrenCount").value) || 0;
     let salary = parseFloat(document.getElementById("salary").value);
+    let email = document.getElementById("email").value.trim();
 
     // Validation
-    if (!name || !age || !occupation || !maritalStatus || !salary) {
+    if (!name || !age || !occupation || !maritalStatus || !salary || !email) {
         alert("Please fill in all required fields.");
         return;
     }
@@ -30,13 +31,22 @@ function processForm() {
     if (age < 18) {
         msg += "<p>• You are underage.</p>";
     }
+    else {
+        msg += "<p>• You are an adult.</p>";
+    }
 
     if (salary > 500000) {
         msg += "<p>• High earner!</p>";
     }
+    else {
+        msg += "<p>• Average income.</p>";
+    }
 
     if (maritalStatus === "Married" && children > 2) {
         msg += "<p>• Big family!</p>";
+    }
+    else {
+        msg += "<p>• Small family.</p>";
     }
 
     // Switch occupation message
